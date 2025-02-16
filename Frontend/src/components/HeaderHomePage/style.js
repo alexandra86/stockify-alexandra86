@@ -46,7 +46,6 @@ const StyledHeaderHomePage = styled.div`
     font-weight: 600;
     font-size: 0.75rem;
     color: var(--bg-white);
-    cursor: pointer;
   }
   .btEntrar.mobile {
     display: none;
@@ -57,7 +56,6 @@ const StyledHeaderHomePage = styled.div`
     background: none;
     border: none;
     color: var(--bg-white);
-    cursor: pointer;
   }
 
   @media (max-width: 56.25rem) {

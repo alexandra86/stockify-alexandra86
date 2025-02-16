@@ -13,19 +13,19 @@ body,
 html {
   overflow-x: hidden !important;
 
-  /* ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 0.5rem;
 
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--bg-gray-5);
+    background-color: var(--bg-blue-3);
     
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--bg-gray-5);
-  }   */
+    background-color: var(--bg-blue-3);
+  }  
 }
 
 ul, ol, li{
@@ -83,6 +83,7 @@ html, body, #root {
     --bg-green: #28A745;
     --bg-red: #C82333; 
     --bg-purple: #191970;
+    --bg-black:#000000;
    
     //Incolor:
     --bg-none:none;
