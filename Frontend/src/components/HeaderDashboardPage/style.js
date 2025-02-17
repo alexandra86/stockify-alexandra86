@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeaderHomePage = styled.div`
+const StyledDashboardPage = styled.div`
   max-width: 100vw;
   width: 100%;
   height: 5.688rem;
@@ -14,7 +14,7 @@ const StyledHeaderHomePage = styled.div`
     justify-content: space-between;
   }
 
-  .logoHomePage {
+  .logoDashPage {
     font-family: var(--family-2);
     font-weight: 700;
     font-size: 2.25rem;
@@ -36,7 +36,7 @@ const StyledHeaderHomePage = styled.div`
     text-decoration: none;
   }
 
-  .btEntrar {
+  .btSair {
     width: 8.125rem;
     height: 3.125rem;
     border-radius: 1rem;
@@ -48,7 +48,7 @@ const StyledHeaderHomePage = styled.div`
     color: var(--bg-white);
   }
 
-  .btEntrar:hover {
+  .btSair:hover {
     background-color: var(--bg-blue-4);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -56,7 +56,7 @@ const StyledHeaderHomePage = styled.div`
     transition: scale(1.1);
   }
 
-  .btEntrar.mobile {
+  .btSair.mobile {
     display: none;
   }
 
@@ -76,14 +76,14 @@ const StyledHeaderHomePage = styled.div`
       font-size: 1rem;
     }
 
-    .btEntrar {
+    .btSair {
       width: 6.025rem;
       height: 2.9375rem;
     }
   }
 
   @media (max-width: 48rem) {
-    .logoHomePage {
+    .logoDashPage {
       font-size: 1.655rem;
     }
 
@@ -112,12 +112,12 @@ const StyledHeaderHomePage = styled.div`
       text-align: center;
     }
 
-    .btEntrar.mobile {
+    .btSair.mobile {
       display: block;
       margin-top: 1rem;
     }
 
-    .btEntrar.desktop {
+    .btSair.desktop {
       display: none;
     }
 
@@ -126,5 +126,4 @@ const StyledHeaderHomePage = styled.div`
     }
   }
 `;
-
-export default StyledHeaderHomePage;
+export default StyledDashboardPage;

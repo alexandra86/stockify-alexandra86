@@ -1,5 +1,11 @@
+import HeaderDashboardPage from "../../components/HeaderDashboardPage";
+
 const DashBoardPage = () => {
-  return <div>DashboardPage</div>;
+  return (
+    <>
+      <HeaderDashboardPage />
+    </>
+  );
 };
 
 export default DashBoardPage;

@@ -5,12 +5,12 @@ import { StyledNotFound } from "./style";
 const NotFoundPage = () => {
   const navigate = useNavigate();
 
-  const goLoginClick = () => {
+  const goHomeClick = () => {
     navigate("/");
   };
   return (
     <StyledNotFound>
-      <button onClick={goLoginClick} className="btComeBack">
+      <button onClick={goHomeClick} className="btComeBack">
         Voltar
       </button>
       <img

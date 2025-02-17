@@ -1,21 +1,21 @@
 import { useState } from "react";
-import StyledHeaderHomePage from "./style";
 import { Link, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
+import StyledDashboardPage from "./style";
 
-const HeaderHomePage = () => {
+const HeaderDashboardPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const goDashClick = () => {
-    navigate("/dashboard");
+  const goHomeClick = () => {
+    navigate("/");
   };
 
   return (
-    <StyledHeaderHomePage>
+    <StyledDashboardPage>
       <div className="areaMenu">
-        <h1 className="logoHomePage">Stockify</h1>
+        <h1 className="logoDashPage">Stockify</h1>
 
         <button className="menuToggle" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <FiX size={30} /> : <FiMenu size={30} />}
@@ -23,34 +23,26 @@ const HeaderHomePage = () => {
 
         <nav className={`menu ${menuOpen ? "open" : ""}`}>
           <Link to="" className="links">
-            Inventário
+            Fornecedores
           </Link>
           <Link to="" className="links">
-            Estoque
+            Produtos
           </Link>
           <Link to="" className="links">
-            Cadeia de Suprimentos
+            Controle do Estoque
           </Link>
 
-          <button
-            type="button"
-            className="btEntrar mobile"
-            onClick={goDashClick}
-          >
-            Entrar
+          <button type="button" className="btSair mobile" onClick={goHomeClick}>
+            Sair
           </button>
         </nav>
 
-        <button
-          type="button"
-          className="btEntrar desktop"
-          onClick={goDashClick}
-        >
-          Entrar
+        <button type="button" className="btSair desktop" onClick={goHomeClick}>
+          Sair
         </button>
       </div>
-    </StyledHeaderHomePage>
+    </StyledDashboardPage>
   );
 };
 
-export default HeaderHomePage;
+export default HeaderDashboardPage;
