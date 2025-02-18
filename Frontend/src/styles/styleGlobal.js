@@ -6,12 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing:border-box;
-      
+     
 }
 
 body,
 html {
   overflow-x: hidden !important;
+  background-color: var(--bg-gray-4);
 
   ::-webkit-scrollbar {
     width: 0.5rem;

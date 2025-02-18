@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledHeaderHomePage = styled.div`
+const StyledHeaderHomePage = styled.header`
   max-width: 100vw;
   width: 100%;
   height: 5.688rem;
@@ -69,7 +69,7 @@ const StyledHeaderHomePage = styled.div`
 
   @media (max-width: 56.25rem) {
     .logoHomePage {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
 
     .links {

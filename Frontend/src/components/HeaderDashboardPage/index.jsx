@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
-import StyledDashboardPage from "./style";
+import StyledHeaderDashboardPage from "./style";
 
 const HeaderDashboardPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ const HeaderDashboardPage = () => {
   };
 
   return (
-    <StyledDashboardPage>
+    <StyledHeaderDashboardPage>
       <div className="areaMenu">
         <h1 className="logoDashPage">Stockify</h1>
 
@@ -41,7 +41,7 @@ const HeaderDashboardPage = () => {
           Sair
         </button>
       </div>
-    </StyledDashboardPage>
+    </StyledHeaderDashboardPage>
   );
 };
 
