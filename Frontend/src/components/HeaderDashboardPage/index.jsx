@@ -25,7 +25,7 @@ const HeaderDashboardPage = () => {
           <Link to="" className="links">
             Fornecedores
           </Link>
-          <Link to="" className="links">
+          <Link to="/products" className="links">
             Produtos
           </Link>
           <Link to="" className="links">

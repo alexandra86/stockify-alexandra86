@@ -82,6 +82,7 @@ html, body, #root {
     --bg-white: #FFFFFF;
     --bg-yellow:#FFC107;
     --bg-green: #28A745;
+    --bg-ligth-green:#bccf9d;
     --bg-red: #C82333; 
     --bg-purple: #191970;
     --bg-black:#000000;
