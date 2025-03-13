@@ -18,13 +18,18 @@ const StyledDashMain = styled.main`
     color: var(--bg-gray-1);
   }
 
-  .slideShow {
-    margin-top: 20px;
-    width: 100%;
-    height: 500px;
+  .areaSections {
+    margin-top: 0.3125rem;
+    height: 29rem;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .slideShow {
+    margin-bottom: 0.625rem;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 

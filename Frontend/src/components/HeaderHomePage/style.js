@@ -104,6 +104,7 @@ const StyledHeaderHomePage = styled.header`
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
+      z-index: 1;
     }
 
     .links {
