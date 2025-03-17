@@ -100,6 +100,7 @@ export const StyledContainerModal = styled.div`
     padding: 0.5rem;
     background-color: var(--bg-gray-3);
     border: 0.07625rem solid var(--bg-gray-1);
+    font-family: var(--family-1);
     border-radius: 0.25rem;
     color: var(--bg-gray-1);
   }

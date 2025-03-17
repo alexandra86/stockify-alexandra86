@@ -8,7 +8,12 @@ import uploadImage from "../../Img/icon_upload.png";
 import addProductSchema from "./addProductSchema";
 
 const AddProductModal = () => {
-  const { loading, handleAddProductModal } = useContext(GeralContext);
+  const {
+    loading,
+    handleAddProductModal,
+    handleDateMask,
+    handleCodBarrasMask,
+  } = useContext(GeralContext);
 
   const {
     register,
@@ -30,8 +35,10 @@ const AddProductModal = () => {
     resolver: zodResolver(addProductSchema),
   });
 
-  const submit = async () => {
-    // const information = { ...data };
+  const submit = async (data) => {
+    const information = { ...data };
+
+    console.log(information);
 
     reset();
   };
@@ -41,8 +48,8 @@ const AddProductModal = () => {
     if (selectedFile) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const base64String = reader.result.split(",")[1]; // Remove o cabeçalho do base64
-        setValue("imgproduct", base64String); // Define o valor do campo 'imgproduct' como a string base64 do arquivo
+        const base64String = reader.result.split(",")[1];
+        setValue("imgproduct", base64String);
       };
       reader.readAsDataURL(selectedFile);
     }
@@ -79,11 +86,13 @@ const AddProductModal = () => {
             Código de Barras
           </label>
           <input
-            type="number"
+            type="text"
             name="codbarras"
             placeholder="Insira o código de barras"
             className="inputModal"
             {...register("codbarras")}
+            onInput={handleCodBarrasMask}
+            maxLength={14}
           />
           {errors.codbarras && (
             <p className="areaError">{errors.codbarras.message}</p>
@@ -93,12 +102,12 @@ const AddProductModal = () => {
             Descrição
           </label>
           <textarea
-            id="description"
             name="description"
             rows="4"
             cols="50"
             placeholder="Descreva brevemente o produto"
             className="textAreaModal"
+            {...register("description")}
           ></textarea>
           {errors.description && (
             <p className="areaError">{errors.description.message}</p>
@@ -108,7 +117,7 @@ const AddProductModal = () => {
             Quantidade em Estoque
           </label>
           <input
-            type="number"
+            type="text"
             name="qdestoque"
             placeholder="Quantidade disponível"
             className="inputModal"
@@ -144,11 +153,13 @@ const AddProductModal = () => {
             Data de Validade
           </label>
           <input
-            type="date"
+            type="text"
             name="datavalidade"
             placeholder="Selecione a data de validade"
             className="inputModal"
             {...register("datavalidade")}
+            onInput={handleDateMask}
+            maxLength={10}
           />
           {errors.datavalidade && (
             <p className="areaError">{errors.datavalidade.message}</p>
