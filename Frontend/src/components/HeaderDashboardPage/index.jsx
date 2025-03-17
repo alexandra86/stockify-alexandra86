@@ -22,7 +22,7 @@ const HeaderDashboardPage = () => {
         </button>
 
         <nav className={`menu ${menuOpen ? "open" : ""}`}>
-          <Link to="" className="links">
+          <Link to="/supplier" className="links">
             Fornecedores
           </Link>
           <Link to="/products" className="links">

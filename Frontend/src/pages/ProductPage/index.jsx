@@ -13,14 +13,13 @@ const ProductsPage = () => {
     <>
       <HeaderPages />
       <StyledProductsPageMain>
-        <div className="areaAddProduct">
-          <button
-            onClick={() => handleAddProductModal()}
-            className="btAddProduct"
-          >
-            Cadastrar Produto
-          </button>
-        </div>
+        <button
+          onClick={() => handleAddProductModal()}
+          className="btAddProduct"
+        >
+          Cadastrar Produto
+        </button>
+
         <ul className="areaCards">
           <ProductCards />
           <ProductCards />

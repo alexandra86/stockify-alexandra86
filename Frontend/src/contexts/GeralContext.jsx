@@ -30,7 +30,7 @@ export const GeralProvider = ({ children }) => {
   };
 
   const handleCodBarrasMask = (event) => {
-    let codeBar = event.target.codeBar.replace(/\D/g, "");
+    let codeBar = event.target.codeBar;
 
     if (codeBar.length > 14) {
       codeBar = codeBar.slice(0, 14);
