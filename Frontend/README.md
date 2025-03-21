@@ -13,7 +13,7 @@
 O projeto representa um sistema de gerenciamento de estoque com as seguintes seguintes funcionalidades:
 </p><br>
 
-- HomePage - página inicial e principal da aplicação;
+- HomePage - página inicial e de apresentação da aplicação;
 - DashboardPage - onde o usuário terá acesso as páginas de fornecedores, produtos e controle do estoque;
 - SupplierPage- onde o usuário poderá cadastrar, editar ou deletar um fornecedor.
 - ProductPage - onde o usuário poderá cadastrar, editar ou deletar um produto.
