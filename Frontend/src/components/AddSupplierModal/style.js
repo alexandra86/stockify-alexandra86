@@ -84,71 +84,6 @@ export const StyledContainerModal = styled.div`
     font-weight: 400;
     font-size: 1.015rem;
   }
-  .selectModal {
-    max-width: 20.620625rem;
-    width: 100%;
-    height: 3rem;
-    padding: 0.5rem;
-    background-color: var(--bg-white);
-    border: 0.07625rem solid var(--bg-ligth-purple);
-    border-radius: 1.25rem;
-    color: var(--bg-gray-1);
-    opacity: 0.9;
-    font-family: var(--family-1);
-    font-weight: 400;
-    font-size: 1rem;
-  }
-
-  .textAreaModal {
-    padding: 0.5rem;
-    background-color: var(--bg-white);
-    border: 0.07625rem solid var(--bg-gray-1);
-    font-family: var(--family-1);
-    border-radius: 1.25rem;
-    color: var(--bg-gray-1);
-  }
-
-  .textAreaModal::placeholder {
-    color: var(--bg-gray-1);
-    opacity: 0.9;
-    font-family: var(--family-1);
-    font-weight: 400;
-    font-size: 1rem;
-  }
-
-  .fileUploadLabel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0.313rem;
-    font-size: 0.75rem;
-    font-family: var(--family-1);
-    color: var(--bg-white);
-    cursor: pointer;
-  }
-
-  .inputFileUpload {
-    max-width: 20.620625rem;
-    width: 100%;
-    height: 3rem;
-    padding: 0.5rem;
-    background-color: var(--bg-white);
-    border: 0.07625rem solid var(--bg-ligth-purple);
-    border-radius: 1.25rem;
-    color: var(--bg-gray-1);
-  }
-
-  .imageFileUpload {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-
-  .imageFileUpload:hover {
-    -webkit-transform: scale(1.1);
-    -webkit-transition: scale(1.1);
-    transform: scale(1.1);
-    transition: scale(1.1);
-  }
 
   .areaError {
     color: var(--bg-red);
@@ -157,6 +92,7 @@ export const StyledContainerModal = styled.div`
     font-size: 0.75rem;
   }
   .btRegisterModal {
+    margin-top: 0.625rem;
     margin-bottom: 0.625rem;
     max-width: 20.25rem;
     width: 100%;

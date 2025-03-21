@@ -13,6 +13,7 @@ const ProductsPage = () => {
     <>
       <HeaderPages />
       <StyledProductsPageMain>
+        <h1 className="tittleProduct">PRODUTOS</h1>
         <button
           onClick={() => handleAddProductModal()}
           className="btAddProduct"

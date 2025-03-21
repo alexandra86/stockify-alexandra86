@@ -78,6 +78,7 @@ html, body, #root {
     --bg-blue-5:#4AA0C8;
     --bg-blue-6:#5DADE2;
     
+    
     //Outras Cores:
     --bg-white: #FFFFFF;
     --bg-yellow:#FFC107;
@@ -85,6 +86,7 @@ html, body, #root {
     --bg-ligth-green:#bccf9d;
     --bg-red: #C82333; 
     --bg-purple: #191970;
+    --bg-ligth-purple:#8698D9;
     --bg-black:#000000;
    
     //Incolor:

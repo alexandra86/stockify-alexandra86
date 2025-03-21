@@ -176,10 +176,11 @@ const AddProductModal = () => {
             style={{ display: "none" }}
             {...register("imgproduct")}
             onChange={handleFileChange}
+            className="inputFileUpload"
           />
 
           <button type="submit" className="btRegisterModal">
-            {loading ? "Cadastrando..." : "Cadastrar"}
+            {loading ? "Criando..." : "Criar"}
           </button>
         </form>
       </div>

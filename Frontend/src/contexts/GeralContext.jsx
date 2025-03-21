@@ -7,10 +7,16 @@ export default GeralContext;
 // eslint-disable-next-line react/prop-types
 export const GeralProvider = ({ children }) => {
   const [modalIsAddProductOpen, setIsAddProductOpen] = useState(false);
+  const [modalIsAddSupplierOpen, setIsAddSupplierOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [tipeDocument, setTipeDocument] = useState("");
 
   const handleAddProductModal = () => {
     setIsAddProductOpen(!modalIsAddProductOpen);
+  };
+
+  const handleAddSupplierModal = () => {
+    setIsAddSupplierOpen(!modalIsAddSupplierOpen);
   };
 
   const handleDateMask = (event) => {
@@ -49,6 +55,11 @@ export const GeralProvider = ({ children }) => {
         setLoading,
         handleDateMask,
         handleCodBarrasMask,
+        modalIsAddSupplierOpen,
+        setIsAddSupplierOpen,
+        handleAddSupplierModal,
+        tipeDocument,
+        setTipeDocument,
       }}
     >
       {children}

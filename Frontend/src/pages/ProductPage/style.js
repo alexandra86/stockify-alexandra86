@@ -20,6 +20,15 @@ const StyledProductsPageMain = styled.main`
     gap: 0.625rem;
   }
 
+  .tittleProduct {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--family-2);
+    font-weight: 600;
+    font-size: 1.875rem;
+    color: var(--bg-gray-1);
+  }
+
   .btAddProduct {
     width: 15.125rem;
     height: 3.125rem;
