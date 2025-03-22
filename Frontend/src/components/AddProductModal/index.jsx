@@ -10,9 +10,11 @@ import addProductSchema from "./addProductSchema";
 const AddProductModal = () => {
   const {
     loading,
+    setLoading,
     handleAddProductModal,
     handleDateMask,
     handleCodBarrasMask,
+    createProduct,
   } = useContext(GeralContext);
 
   const {
@@ -37,10 +39,15 @@ const AddProductModal = () => {
 
   const submit = async (data) => {
     const information = { ...data };
-
-    console.log(information);
-
-    reset();
+    try {
+      setLoading(true);
+      createProduct(information);
+      reset();
+    } catch (error) {
+      console.error("Erro ao criar Produto:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -137,13 +144,13 @@ const AddProductModal = () => {
             {...register("category")}
           >
             <option value="">Selecione</option>
-            <option value="alimentos">Alimentos</option>
-            <option value="bebidas">Bebidas</option>
-            <option value="eletronicos">Eletrônicos</option>
-            <option value="outros">Outros</option>
-            <option value="presentes">Presentes</option>
-            <option value="suplementos">Suplementos</option>
-            <option value="vestuario">Vestuário</option>
+            <option value="Alimentos">Alimentos</option>
+            <option value="Bebidas">Bebidas</option>
+            <option value="Eletronicos">Eletrônicos</option>
+            <option value="Outros">Outros</option>
+            <option value="Presentes">Presentes</option>
+            <option value="Suplementos">Suplementos</option>
+            <option value="Vestuario">Vestuário</option>
           </select>
           {errors.category && (
             <p className="areaError">{errors.category.message}</p>

@@ -49,6 +49,15 @@ const StyledProductsPageMain = styled.main`
     transition: scale(1.1);
   }
 
+  .areaNotProduct {
+    width: 100%;
+    font-family: var(--family-1);
+    font-weight: 700;
+    font-size: 1.125rem;
+    text-align: center;
+    color: var(--bg-gray-1);
+  }
+
   @media (max-width: 56.25rem) {
     height: auto;
     grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));

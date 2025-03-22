@@ -14,6 +14,8 @@ const StyledProductCards = styled.li`
   border-radius: 0.25rem;
   border: solid 0.125rem var(--bg-gray-3);
   box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(0, 0, 0, 0.1);
+  animation: productAnimation 1.5s ease-in;
+  transform: 1.5s ease-in;
 
   .areaImgProduct {
     max-width: 11.8125rem;
@@ -69,6 +71,16 @@ const StyledProductCards = styled.li`
 
     .infosProduct {
       line-height: 1.125rem;
+    }
+  }
+  @keyframes productAnimation {
+    from {
+      opacity: 0;
+      transform: translateX(-70%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
     }
   }
 `;
