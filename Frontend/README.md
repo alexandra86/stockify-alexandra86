@@ -10,7 +10,9 @@
 
 <h2 font-family="pattaya">Descrição</h2><br>
 <p font-family="robotto" font-size="16px" line-height="34px" align="justify">
+
 O projeto representa um sistema de gerenciamento de estoque com as seguintes funcionalidades:
+
 </p><br>
 
 - HomePage - página inicial e de apresentação da aplicação;
