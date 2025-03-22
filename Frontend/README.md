@@ -23,7 +23,7 @@ O projeto representa um sistema de gerenciamento de estoque com as seguintes fun
 
 <h2 font-family="pattaya">Requisitos técnicos:</h2><br>
 
-- a aplicação utiliza api rodando localmente na máquina do usuário. É preciso utilizar o servidor que está neste <a href="" font-family="robotto" font-size="16px">diretório</a>, para visualizar suas funcionalidades;
+- a aplicação utiliza api rodando localmente na máquina do usuário. É preciso utilizar o servidor que está neste <a href="https://github.com/alexandra86/stockify-alexandra86/tree/main/Backend" font-family="robotto" font-size="16px">diretório</a>, para visualizar suas funcionalidades;
 - pacote de instalação do app com yarn pelo vite;
 - utilizados contextos, para os estados, funções e suas props;
 - os modais foram criados com o uso do createPortal (react-dom);
