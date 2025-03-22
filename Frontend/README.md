@@ -10,10 +10,10 @@
 
 <h2 font-family="pattaya">Descrição</h2><br>
 <p font-family="robotto" font-size="16px" line-height="34px" align="justify">
-O projeto representa um sistema de gerenciamento de estoque seguintes funcionalidades:
+O projeto representa um sistema de gerenciamento de estoque com as seguintes funcionalidades:
 </p><br>
 
-- HomePage - página inicial e principal da aplicação;
+- HomePage - página inicial e de apresentação da aplicação;
 - DashboardPage - onde o usuário terá acesso as páginas de fornecedores, produtos e controle do estoque;
 - SupplierPage- onde o usuário poderá cadastrar, editar ou deletar um fornecedor.
 - ProductPage - onde o usuário poderá cadastrar, editar ou deletar um produto.
