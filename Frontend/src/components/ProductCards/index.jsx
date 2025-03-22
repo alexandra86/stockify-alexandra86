@@ -1,15 +1,33 @@
+import { useContext } from "react";
 import StyledProductCards from "./style";
+import GeralContext from "../../contexts/GeralContext";
+import naoDisponivel from "../../Img/naoDisponivel.jpg";
 
 const ProductCards = (elem) => {
+  const { handleEditProductModal, setSelectProduct } = useContext(GeralContext);
+
   return (
     <StyledProductCards key={elem.elem.id}>
-      <figure className="areaImgProduct">
-        <img
-          src={elem.elem.imgproduct}
-          alt={elem.elem.description}
-          className="imgProduct"
-        />
-      </figure>
+      <div className="areaImageAndBtEdit">
+        {elem.elem.imgproduct == "" && (
+          <figure className="areaImgProduct">
+            <img src={naoDisponivel} className="imgProduct" />
+          </figure>
+        )}
+
+        <figure className="areaImgProduct">
+          <img src={elem.elem.imgproduct} className="imgProduct" />
+        </figure>
+        <button
+          className="btEditar"
+          onClick={() => {
+            handleEditProductModal();
+            setSelectProduct(elem.elem);
+          }}
+        >
+          Editar
+        </button>
+      </div>
       <div className="areaInfoProduct">
         <span className="infosProduct">
           <strong className="identifaction">Produto: </strong>

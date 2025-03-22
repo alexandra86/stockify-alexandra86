@@ -5,12 +5,17 @@ import { useContext } from "react";
 import AddProductModal from "../../components/AddProductModal";
 import GeralContext from "../../contexts/GeralContext";
 import ProductCards from "../../components/ProductCards";
+import EditProductModal from "../../components/EditProductModal";
 
 const ProductsPage = () => {
-  const { handleAddProductModal, modalIsAddProductOpen, products, loading } =
-    useContext(GeralContext);
+  const {
+    handleAddProductModal,
+    modalIsAddProductOpen,
+    products,
+    loading,
+    modalIsEditProductOpen,
+  } = useContext(GeralContext);
 
-  console.log(products);
   return (
     <>
       {loading && <div>Carregando...</div>}
@@ -38,6 +43,7 @@ const ProductsPage = () => {
       </StyledProductsPageMain>
       <Footer />
       {modalIsAddProductOpen && <AddProductModal />}
+      {modalIsEditProductOpen && <EditProductModal />}
     </>
   );
 };

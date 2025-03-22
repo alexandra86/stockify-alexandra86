@@ -4,13 +4,22 @@ import StyledSuplierPageMain from "./style";
 import GeralContext from "../../contexts/GeralContext";
 import { useContext } from "react";
 import AddSupplierModal from "../../components/AddSupplierModal";
+import EditSupplierModal from "../../components/EditSupplierModal";
 
 const SupplierPage = () => {
-  const { modalIsAddSupplierOpen, handleAddSupplierModal } =
-    useContext(GeralContext);
+  const {
+    modalIsAddSupplierOpen,
+    handleAddSupplierModal,
+    supplier,
+    loading,
+    modalIsEditSuppliertOpen,
+    setSelectSupplier,
+    handleEditSupplierModal,
+  } = useContext(GeralContext);
 
   return (
     <>
+      {loading && <div>Carregando...</div>}
       <HeaderPages />
       <StyledSuplierPageMain>
         <h1 className="tittleSupplier">FORNECEDORES</h1>
@@ -22,7 +31,6 @@ const SupplierPage = () => {
             Cadastrar Fornecedor
           </button>
         </div>
-
         <table className="tableSupplier">
           <thead className="tableHead">
             <tr className="tableColumn">
@@ -36,20 +44,31 @@ const SupplierPage = () => {
             </tr>
           </thead>
           <tbody className="tableBody">
-            <tr className="tableLine">
-              <td className="line">Casa da Vida LTDA</td>
-              <td className="line">34102141000156</td>
-              <td className="line">Rua da Vida, nº 38</td>
-              <td className="line">(21)9854-2533</td>
-              <td className="line">casadavida@casadavida.com.br</td>
-              <td className="line">Ana</td>
-              <td className="lineEditar">&#128221;</td>
-            </tr>
+            {supplier.map((elem) => (
+              <tr className="tableLine" key={elem.id}>
+                <td className="line">{elem.nameempresa}</td>
+                <td className="line">{elem.cnpj}</td>
+                <td className="line">{elem.address}</td>
+                <td className="line">{elem.telephone}</td>
+                <td className="line">{elem.email}</td>
+                <td className="line">{elem.contactprincipal}</td>
+                <td
+                  className="lineEditar"
+                  onClick={() => {
+                    handleEditSupplierModal();
+                    setSelectSupplier(elem);
+                  }}
+                >
+                  &#128221;
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </StyledSuplierPageMain>
       <Footer />
       {modalIsAddSupplierOpen && <AddSupplierModal />}
+      {modalIsEditSuppliertOpen && <EditSupplierModal />}
     </>
   );
 };

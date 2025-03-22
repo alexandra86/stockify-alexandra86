@@ -10,16 +10,28 @@ export default GeralContext;
 export const GeralProvider = ({ children }) => {
   const [modalIsAddProductOpen, setIsAddProductOpen] = useState(false);
   const [modalIsAddSupplierOpen, setIsAddSupplierOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [modalIsEditProductOpen, setIsEditProductOpen] = useState(false);
+  const [modalIsEditSuppliertOpen, setIsEditSupplierOpen] = useState(false);
   const [tipeDocument, setTipeDocument] = useState("");
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
+  const [supplier, setSupplier] = useState([]);
+  const [selectProduct, setSelectProduct] = useState(null);
+  const [selectSupplier, setSelectSupplier] = useState(null);
 
   const handleAddProductModal = () => {
     setIsAddProductOpen(!modalIsAddProductOpen);
   };
 
+  const handleEditProductModal = () => {
+    setIsEditProductOpen(!modalIsEditProductOpen);
+  };
+
   const handleAddSupplierModal = () => {
     setIsAddSupplierOpen(!modalIsAddSupplierOpen);
+  };
+  const handleEditSupplierModal = () => {
+    setIsEditSupplierOpen(!modalIsEditSuppliertOpen);
   };
 
   const handleDateMask = (event) => {
@@ -48,23 +60,59 @@ export const GeralProvider = ({ children }) => {
     event.target.codeBar = codeBar;
   };
 
+  const handlePhoneMask = (event) => {
+    let value = event.target.value.replace(/\D/g, "");
+
+    if (value.length > 10) {
+      value = value.slice(0, 10);
+    }
+
+    if (value.length > 6) {
+      value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(
+        6,
+        10
+      )}`;
+    } else if (value.length > 2) {
+      value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+    } else if (value.length > 0) {
+      value = `(${value}`;
+    }
+
+    event.target.value = value;
+  };
+
   const createProduct = async (data) => {
     try {
       setLoading(true);
-      const formattedData = {
-        ...data,
-      };
+      const response = await api.post("/products", data);
 
-      console.log("Dados enviados para a API:", formattedData);
-
-      await api.post("/products", formattedData);
+      const productId = response.data.id;
+      localStorage.setItem("@PRODUCTID", productId);
 
       toast.success("Produto criado com sucesso!");
       await searchProducts();
-      setLoading(false);
     } catch (error) {
       toast.error("Algo deu errado!");
       console.log(error.response?.data || error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const editProduct = async (data) => {
+    try {
+      setLoading(true);
+
+      const productId = localStorage.getItem("@PRODUCTID");
+
+      await api.put(`/products/${productId}`, data);
+
+      setIsEditProductOpen(false);
+      toast.success("Produto alterado com sucesso!");
+      await searchProducts();
+    } catch (error) {
+      toast.error("Algo deu errado!");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -82,8 +130,58 @@ export const GeralProvider = ({ children }) => {
     }
   };
 
+  const createSupplier = async (data) => {
+    try {
+      setLoading(true);
+      const response = await api.post("/supplier", data);
+
+      const supplierId = response.data.id;
+      localStorage.setItem("@SUPPLIERID", supplierId);
+
+      toast.success("Fornecedor criado com sucesso!");
+      await searchSuppliers();
+    } catch (error) {
+      toast.error("Algo deu errado!");
+      console.log(error.response?.data || error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const editSupplier = async (data) => {
+    try {
+      setLoading(true);
+
+      const supplierId = localStorage.getItem("@SUPPLIERID");
+
+      await api.put(`/supplier/${supplierId}`, data);
+
+      setIsEditSupplierOpen(false);
+      toast.success("Produto alterado com sucesso!");
+      await searchSuppliers();
+    } catch (error) {
+      toast.error("Algo deu errado!");
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const searchSuppliers = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get("/supplier");
+      setSupplier(response.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     searchProducts();
+    searchSuppliers();
   }, []);
 
   return (
@@ -104,6 +202,23 @@ export const GeralProvider = ({ children }) => {
         createProduct,
         products,
         setProducts,
+        supplier,
+        setSupplier,
+        searchSuppliers,
+        handlePhoneMask,
+        createSupplier,
+        handleEditProductModal,
+        modalIsEditProductOpen,
+        setIsEditProductOpen,
+        selectProduct,
+        setSelectProduct,
+        editProduct,
+        modalIsEditSuppliertOpen,
+        setIsEditSupplierOpen,
+        editSupplier,
+        selectSupplier,
+        setSelectSupplier,
+        handleEditSupplierModal,
       }}
     >
       {children}

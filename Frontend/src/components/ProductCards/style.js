@@ -51,6 +51,29 @@ const StyledProductCards = styled.li`
     line-height: 1.375rem;
   }
 
+  .areaImageAndBtEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btEditar {
+    max-width: 100px;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.125rem;
+    background-color: var(--bg-blue-3);
+    font-family: var(--family-1);
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--bg-white);
+    border-radius: 0.25rem;
+  }
+
+  .btEditar:hover {
+    background-color: var(--bg-blue-4);
+  }
+
   @media (max-width: 56.25rem) {
     max-width: 32.8125rem;
 

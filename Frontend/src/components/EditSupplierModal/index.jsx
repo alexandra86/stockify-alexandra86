@@ -4,16 +4,17 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StyledContainerModal } from "./style";
 import { createPortal } from "react-dom";
-import addSupplierSchema from "./addSupplierSchema";
+import editSupplierSchema from "./editSupplierSchema";
 
-const AddSupplierModal = () => {
+const EditSupplierModal = () => {
   const {
     loading,
-    handleAddSupplierModal,
+    handleEditSupplierModal,
     setTipeDocument,
     setLoading,
     handlePhoneMask,
-    createSupplier,
+    editSupplier,
+    selectSupplier,
   } = useContext(GeralContext);
 
   const {
@@ -25,14 +26,14 @@ const AddSupplierModal = () => {
   } = useForm({
     mode: "onBlur",
     defaultValues: {
-      nameempresa: "",
-      cnpj: "",
-      address: "",
-      telephone: "",
-      email: "",
-      contactprincipal: "",
+      nameempresa: selectSupplier.nameempresa,
+      cnpj: selectSupplier.cnpj,
+      address: selectSupplier.address,
+      telephone: selectSupplier.telephone,
+      email: selectSupplier.email,
+      contactprincipal: selectSupplier.contactprincipal,
     },
-    resolver: zodResolver(addSupplierSchema),
+    resolver: zodResolver(editSupplierSchema),
   });
 
   useEffect(() => {
@@ -55,9 +56,9 @@ const AddSupplierModal = () => {
 
     try {
       setLoading(true);
-      await createSupplier(information);
+      await editSupplier(information);
     } catch (error) {
-      console.error("Erro ao criar fornecedor:", error);
+      console.error("Erro ao editar fornecedor:", error);
     } finally {
       setLoading(false);
     }
@@ -68,9 +69,9 @@ const AddSupplierModal = () => {
     <StyledContainerModal>
       <div className="modalContent">
         <div className="headerModal">
-          <h2 className="titleModal">Cadastro de Fornecedor</h2>
+          <h2 className="titleModal">Editar Fornecedor</h2>
           <button
-            onClick={() => handleAddSupplierModal()}
+            onClick={() => handleEditSupplierModal()}
             className="btCloseModal"
           >
             X
@@ -160,7 +161,7 @@ const AddSupplierModal = () => {
           )}
 
           <button type="submit" className="btRegisterModal">
-            {loading ? "Criando..." : "Criar"}
+            {loading ? "Editando..." : "Editar"}
           </button>
         </form>
       </div>
@@ -168,7 +169,7 @@ const AddSupplierModal = () => {
   );
   return createPortal(
     modalContent,
-    document.getElementById("modalAddSupplier-root")
+    document.getElementById("modalEditSupplier-root")
   );
 };
-export default AddSupplierModal;
+export default EditSupplierModal;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledSuplierPageMain = styled.main`
-  margin-top: 20px;
+  margin-top: 1.25rem;
   max-width: 100vw;
   width: 100%;
   display: flex;
@@ -46,15 +46,15 @@ const StyledSuplierPageMain = styled.main`
 
   .tableSupplier {
     margin-top: 2.1875rem;
-    max-width: 1171px;
+    max-width: 73.1875rem;
     width: 100%;
     height: auto;
   }
 
   .tableHead {
     width: 100%;
-    height: 32px;
-    padding: 10px 3px;
+    height: 2rem;
+    padding: 0.625rem 0.1875rem;
     text-align: center;
   }
 
@@ -66,12 +66,12 @@ const StyledSuplierPageMain = styled.main`
   }
 
   .columns {
-    min-width: 260px;
+    min-width: 16.25rem;
     color: var(--bg-white);
   }
 
   .columnsEditar {
-    min-width: 90px;
+    min-width: 5.625rem;
     font-size: var(--family-1);
     font-weight: 700;
     font-size: 1rem;
@@ -79,9 +79,9 @@ const StyledSuplierPageMain = styled.main`
   }
 
   .lineEditar {
-    border: solid 2px var(--bg-blue-5);
+    border: solid 0.125rem var(--bg-blue-5);
     background-color: var(--bg-gray-4);
-    padding: 2px 4px;
+    padding: 0.125rem 0.25rem;
     text-align: center;
     cursor: pointer;
   }
@@ -89,11 +89,11 @@ const StyledSuplierPageMain = styled.main`
   .line {
     border: solid 2px var(--bg-blue-5);
     background-color: var(--bg-gray-4);
-    padding: 2px 4px;
+    padding: 0.125rem 0.25rem;
     text-align: center;
     font-family: var(--family-1);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: var(--bg-gray-1);
   }
 

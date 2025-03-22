@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledProductsPageMain = styled.main`
-  margin-top: 20px;
+  margin-top: 1.25rem;
   max-width: 100vw;
   width: 100%;
   display: flex;
