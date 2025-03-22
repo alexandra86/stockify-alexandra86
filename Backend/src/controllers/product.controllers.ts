@@ -5,7 +5,7 @@ import { createProductService } from "../services/products/createProduct.service
 export const createProductController = async (
   request: Request,
   response: Response
-) => {
+): Promise<any> => {
   const productData: ICreateProduct = request.body;
 
   const newProduct = await createProductService(productData);

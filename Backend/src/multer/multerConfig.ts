@@ -9,11 +9,12 @@ import { ensureUploadsDir } from "../services/products/createProduct.service";
 const storage = multer.diskStorage({
   destination: (request: Request, file: Express.Multer.File, cb) => {
     ensureUploadsDir();
-    const uploadsDir = path.join(__dirname, "../../uploads");
+    const uploadsDir = path.join(__dirname, "uploads");
     cb(null, uploadsDir);
   },
   filename: (request: Request, file: Express.Multer.File, cb) => {
-    const fileName = `${Date.now()}-${file.originalname}`;
+    const timestamp = Date.now();
+    const fileName = `${timestamp}-${file.originalname.replace(/\s+/g, "-")}`;
     cb(null, fileName);
   },
 });
@@ -31,9 +32,14 @@ const upload = multer({
     const mimetype = filetypes.test(file.mimetype);
 
     if (extname && mimetype) {
-      return cb(null, true);
+      cb(null, true);
     } else {
-      cb(new AppError("Apenas arquivos PNG, JPG e JPEG são permitidos.", 400));
+      cb(
+        new AppError(
+          `Formato de arquivo inválido: ${file.originalname}. Apenas arquivos PNG e JPG são permitidos.`,
+          400
+        )
+      );
     }
   },
 });

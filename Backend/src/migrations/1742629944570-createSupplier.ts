@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class CreateSupplier1742609328213 implements MigrationInterface {
-    name = 'CreateSupplier1742609328213'
+export class CreateSupplier1742629944570 implements MigrationInterface {
+    name = 'CreateSupplier1742629944570'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE \`products\` (\`id\` int NOT NULL AUTO_INCREMENT, \`nameproduct\` text NOT NULL, \`codbarras\` text NOT NULL, \`description\` text NOT NULL, \`qdestoque\` text NOT NULL, \`category\` enum ('Alimentos', 'Bebidas', 'Eletrônicos', 'Outros', 'Presentes', 'Suplementos', 'Vestuário', 'Selecione') NOT NULL DEFAULT 'Selecione', \`datavalidade\` text NULL, \`imgproduct\` text NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);

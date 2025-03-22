@@ -1,20 +1,20 @@
 import path from "path";
 import fs from "fs";
+import { AppDataSource } from "../../data-source";
 import {
   ICreateProduct,
   IProductRepo,
   IReturnProduct,
 } from "../../interfaces/product.interface";
-import { AppDataSource } from "../../data-source";
 import { Product } from "../../entities";
 import { AppError } from "../../errors";
 import { returnProductSchema } from "../../schemas/product.schema";
 
 // Certifique-se de que a pasta de uploads exista
 export const ensureUploadsDir = () => {
-  const uploadsDir = path.join(__dirname, "../../uploads");
-  if (!fs.existsSync(uploadsDir)) {
-    fs.mkdirSync(uploadsDir, { recursive: true });
+  const uploadsPath = path.join(__dirname, "uploads");
+  if (!fs.existsSync(uploadsPath)) {
+    fs.mkdirSync(uploadsPath, { recursive: true });
   }
 };
 
@@ -28,44 +28,63 @@ export const createProductService = async (
     imgproduct: "",
   });
 
+  await productRepository.save(product);
+
   ensureUploadsDir();
 
   if (productData.imgproduct) {
-    // Verifica se a string de imgproduct já contém um cabeçalho
-    let base64Data;
-    if (productData.imgproduct.startsWith("data:")) {
-      base64Data = productData.imgproduct.split(",")[1]; // Remove o prefixo da string base64
-    } else {
-      // Caso não tenha cabeçalho, você pode definir um padrão, por exemplo, para PNG
-      const defaultPng = "data:image/png;base64,";
-      const defaultJpg = "data:image/jpg;base64,";
-      const defaultJpeg = "data:image/jpeg;base64,";
-      productData.imgproduct =
-        defaultPng || defaultJpg || defaultJpeg + base64Data; // Adiciona o cabeçalho
-      base64Data = productData.imgproduct; // Assumindo que a string já é base64
+    if (!productData.imgproduct.startsWith("data:")) {
+      const baseData = productData.imgproduct;
+
+      const defaultPng = `data:image/png;base64,${baseData}`;
+      const defaultJpg = `data:image/jpg;base64,${baseData}`;
+
+      if (baseData.startsWith("iVBORw0KGgo=")) {
+        // PNG base64 signature
+        productData.imgproduct = defaultPng;
+      } else if (baseData.startsWith("/9j/")) {
+        // JPG/JPEG base64 signature
+        productData.imgproduct = defaultJpg;
+      } else {
+        // Caso não identifique corretamente, lança um erro
+        throw new AppError("Anexo Inválido.", 400);
+      }
     }
 
-    const fileSizeInBytes = Buffer.byteLength(base64Data, "base64");
-    const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+    const mimeType = productData.imgproduct.match(/^data:(.*);base64,/);
+    if (!mimeType) throw new AppError("Formato de arquivo inválido.", 400);
 
-    if (fileSizeInBytes > MAX_FILE_SIZE) {
+    const base64Data = productData.imgproduct.split(",")[1];
+    const fileType = mimeType[1].split("/")[1];
+
+    const allowedTypes = ["png", "jpg"];
+    if (!allowedTypes.includes(fileType)) {
+      throw new AppError("Formato de arquivo não suportado.", 400);
+    }
+
+    const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+    if (Buffer.byteLength(base64Data, "base64") > MAX_FILE_SIZE) {
       throw new AppError(
         "O arquivo é muito grande. O tamanho máximo é de 50MB.",
         400
       );
     }
 
-    const fileExtension = path.extname(productData.imgproduct);
-    const fileName = `${Date.now()}-${product.id}${fileExtension}`;
-
-    const filePath = path.join(__dirname, "../../uploads", fileName);
-
+    const fileName = `${Date.now()}-${product.id}.${fileType}`;
+    const filePath = path.join("uploads", fileName);
+    console.log("Caminho do arquivo:", filePath);
     const fileData = Buffer.from(base64Data, "base64");
 
     fs.writeFileSync(filePath, fileData);
 
-    const imgproductUrl = `https://localhost:3000/uploads/${fileName}`;
-    product.imgproduct = imgproductUrl;
+    // const anexoUrl =
+    //   process.env.NODE_ENV === "dev"
+    //     ? `http://localhost:3000/uploads/${fileName}`
+    //     : `https://seu-dominio.com/uploads/${fileName}`;
+
+    const anexoUrl = `http://localhost:3000/uploads/${fileName}`;
+
+    product.imgproduct = anexoUrl;
   }
 
   await productRepository.save(product);
