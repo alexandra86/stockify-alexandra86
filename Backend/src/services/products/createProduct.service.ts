@@ -39,7 +39,7 @@ export const createProductService = async (
       const defaultPng = `data:image/png;base64,${baseData}`;
       const defaultJpg = `data:image/jpg;base64,${baseData}`;
 
-      if (baseData.startsWith("iVBORw0KGgo=")) {
+      if (baseData.startsWith("iVBORw0KGgo")) {
         // PNG base64 signature
         productData.imgproduct = defaultPng;
       } else if (baseData.startsWith("/9j/")) {

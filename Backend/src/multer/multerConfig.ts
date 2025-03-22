@@ -23,7 +23,7 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 50 * 1024 * 1024 }, // Limite de 50 MB
 
-  fileFilter: (req: Request, file: Express.Multer.File, cb) => {
+  fileFilter: (request: Request, file: Express.Multer.File, cb) => {
     // Filtrar tipos de arquivo permitidos
     const filetypes = /png|jpg|jpeg/; // Tipos permitidos
     const extname = filetypes.test(

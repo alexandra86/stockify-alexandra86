@@ -10,7 +10,7 @@ import {
 export type IProductRepo = Repository<Product>;
 export type ICreateProduct = z.infer<typeof createProductSchema>;
 export type IReturnProduct = z.infer<typeof returnProductSchema>;
-export type IAllReturnProductes = DeepPartial<
+export type IAllReturnProducts = DeepPartial<
   z.infer<typeof returnAllProductSchema>
 >;
 export type IUpdateProduct = DeepPartial<ICreateProduct>;

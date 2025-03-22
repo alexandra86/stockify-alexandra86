@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class ResetproductsTable1742632463535 implements MigrationInterface {
+export class ResetproductsTable1742654580955 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`TRUNCATE TABLE products`);
   }
